@@ -1,0 +1,32 @@
+@extends('layouts.index')
+
+@section('center')
+    
+    <section class="wishlist-products">
+        <div class="wishlist-main">
+            <div class="wishlist-row">
+                <h2 class="wishlist-heading">Wishlist</h2>
+                <div class="wishlist-wrapper">
+                    @foreach($products as $product)
+                    <div class="wishlist-box">
+                        <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" class="product-wishlist-image" alt="" />
+                        <div class="wishlist-product-information">
+                            <h2>{{ $product->name }}</h2>
+                            <p>Web ID: {{ $product->id }}</p>
+                            <span>¥{{ $product->price }}</span>
+                            <div class="wishlist-product-description">
+                                <span>説明</span>
+                                <p>{{ $product->description }}</p>
+                            </div>
+                        </div>
+                        <div class="product-add">
+                            <a href="{{ route('AddToCartProduct',['id'=>$product->id]) }}" class="add-to-cart">cart</a>
+                            <a href="{{ route('deleteWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">nowishlist</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>>
+            </div>
+        </div>
+    </section>
+@endsection
