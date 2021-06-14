@@ -28,7 +28,7 @@
                         <input type="text" name="first_name" placeholder="名（な／めい）">
                         <input type="text" name="zip" placeholder="郵便番号（ハイフンなし）">
                         <select name="prefectures">
-                            <option selected>-- 都道府県--</option>
+                            <option hidden>-- 都道府県--</option>
                             <option value="北海道">北海道</option>
                             <option value="青森県">青森県</option>
                             <option value="岩手県">岩手県</option>

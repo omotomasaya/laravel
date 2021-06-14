@@ -21,7 +21,7 @@
                         </div>
                         <div class="product-add">
                             <a href="{{ route('AddToCartProduct',['id'=>$product->id]) }}" class="add-to-cart">cart</a>
-                            <a href="{{ route('deleteWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">nowishlist</a>
+                            <a href="{{ route('deleteWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">nowish</a>
                         </div>
                     </div>
                     @endforeach

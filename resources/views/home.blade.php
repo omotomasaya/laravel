@@ -21,7 +21,7 @@
 
                     @if(Auth::user()->admin == 1)
 
-                    <a href="{{ route('adminDisplayProducts')}}" class="btn btn-primary">Admin Dashboard</a>
+                    <a href="{{ route('adminDisplayProducts')}}" class="btn btn-primary">管理画面</a>
                     
                     @endif
                 </div>

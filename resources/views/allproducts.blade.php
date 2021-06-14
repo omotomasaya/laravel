@@ -60,7 +60,16 @@
                                     <h3 class="product-name">{{$product->name}}</h3>
                                     <p class="product-description">{{ $product->description }}</p>
                                     <a href="{{ route('AddToCartProduct',['id'=>$product->id]) }}" class="add-to-cart">cart</a>
-                                    <a href="{{ route('addToWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">wishlist</a>
+                                    @if( DB::table('wishlist')->where('user_id', Auth::id())->where('wishlist_id', $product->id)->exists() )
+
+                                    <a href="{{ route('deleteWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">nowish</a>
+
+                                    @else
+
+                                    <a href="{{ route('addToWishlist',['id'=>$product->id]) }}" class="add-to-wishlist">wish</a>
+
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

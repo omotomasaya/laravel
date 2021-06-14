@@ -17,7 +17,6 @@ class ProductsController extends Controller
     public function index(){
 
         $products = Product::all();
-
         return view('allproducts', compact('products'));
 
     }
@@ -80,10 +79,19 @@ class ProductsController extends Controller
 
     public function wishlist(){
 
-        $user_id = Auth::id();
-        $products = DB::table('wishlist')->leftJoin('products','wishlist_id', '=', 'products.id')->where('user_id', $user_id)->get();
+        if(Auth::id()){
 
-        return view("wishlist", compact("products"));
+            $user_id = Auth::id();
+            $products = DB::table('wishlist')->leftJoin('products','wishlist_id', '=', 'products.id')->where('user_id', $user_id)->get();
+
+            return view("wishlist", compact("products"));
+
+        }else{
+
+            return redirect()->route('allProducts');
+
+        }
+        
 
     }
 
@@ -105,6 +113,10 @@ class ProductsController extends Controller
                 DB::table('wishlist')->insert($wishlistArray);
 
             }
+
+            return redirect()->route('allProducts');
+
+        }else{
 
             return redirect()->route('allProducts');
 

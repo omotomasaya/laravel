@@ -18,7 +18,15 @@
             </div>
             <ul class="nav header-nav">
                 <li class="nav-item"><a href="{{ route('allProducts') }}"></i>Products</a></li>
-                <li class="nav-item"><a href="{{ route('wishlist') }}"></i>Wishlist</a></li>
+                <li class="nav-item"><a href="{{ route('wishlist') }}"></i>
+
+                @if(DB::table('wishlist')->where('user_id', Auth::id())->count() > 0)
+                <span class="cart-with-numbers">
+                {{ DB::table('wishlist')->where('user_id', Auth::id())->count() }}</span>
+
+                @endif
+
+                Wishlist</a></li>
                 <li class="nav-item"><a href="{{ route('CheckoutProducts') }}"></i> Checkout</a></li>
                 <li class="nav-item"><a href="{{ route('cartproducts') }}">
                 @if(Session::has('cart'))
@@ -31,11 +39,11 @@
 
                 @if(Auth::user())
 
-                <li class="nav-item"><a href="/home"></i>Profile</a></li>
+                <li class="nav-item"><a href="{{route('home') }}">Profile</a></li>
 
                 @else
 
-                <li class="nav-item"><a href="/login"></i>Login</a></li>
+                <li class="nav-item"><a href="{{route('login') }}">Login</a></li>
 
                 @endif
             </ul>
