@@ -27,7 +27,7 @@
             <td>{{ $product['name'] }}</td>
             <td>{{ $product['description'] }}</td>
             <td>{{ $product['type'] }}</td>
-            <td>${{ $product['price'] }}</td>
+            <td>¥{{ $product['price'] }}</td>
 
             <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>
             <td><a href="{{ route('adminEditProductForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit</a></td>
