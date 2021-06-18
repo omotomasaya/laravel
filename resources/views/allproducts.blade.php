@@ -55,7 +55,7 @@
                         <div class="product-box">
                             <div class="single-products">
                                 <div class="prducts-content">
-                                    <img src="{{asset ('storage')}}/product_images/{{$product['image']}}" class="products-image">
+                                    <img  src="{{Storage::disk('local')->url('product_images/'.$product->image)}}"  class="products-image">
                                     <h2>¥{{$product->price}}</h2>
                                     <h3 class="product-name">{{$product->name}}</h3>
                                     <p class="product-description">{{ $product->description }}</p>
