@@ -22,21 +22,21 @@
                     <h2>Category</h2>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="{{ route('equipmentProducts')}}">
+                            <a href="{{ route('equipmentProducts')}}">
                                 Equipment
                             </a>
                         </h4>
                     </div>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="{{ route('foodProducts')}}">
+                            <a href="{{ route('foodProducts')}}">
                                 Food
                             </a>
                         </h4>
                     </div>                      
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="{{ route('supplementProducts')}}">
+                            <a href="{{ route('supplementProducts')}}">
                                 Supplement
                             </a>
                         </h4>
@@ -47,7 +47,7 @@
                     <h2 class="features-center">Features Items</h2>
                     <div class="search-box">
                         <form action="equipmentSearch" method="get">
-                            <input type="text" name="searchText"  placeholder="Search"/>
+                            <input type="text" name="searchText"  placeholder="Search">
                         </form>
                     </div>
                     <div class="product-wrapper">
@@ -55,7 +55,7 @@
                         <div class="product-box">
                             <div class="single-products">
                                 <div class="prducts-content">
-                                    <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="" class="products-image" />
+                                    <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="" class="products-image">
                                     <h2>¥{{$product->price}}</h2>
                                     <h3 class="product-name">{{$product->name}}</h3>
                                     <p class="product-description">{{ $product->description }}</p>

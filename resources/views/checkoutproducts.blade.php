@@ -108,7 +108,7 @@
         @else
 
         <div>
-        <a href="{{route('login') }}" class="btn-check-out">ログイン</a>ログインしてください
+        <a href="{{ route('login') }}" class="btn-check-out">ログイン</a>ログインしてください
         </div>
 
         @endif

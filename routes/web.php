@@ -33,10 +33,13 @@ Route::get('products/supplement', [ProductsController::class, 'supplementProduct
 //検索
 Route::get('search', [ProductsController::class, 'search'])->name('searchProducts');
 
+//equipment画面の検索
 Route::get('products/equipmentSearch', [ProductsController::class, 'equipmentSearch'])->name('equipmentSearchProducts');
 
+//food画面の検索
 Route::get('products/foodSearch', [ProductsController::class, 'foodSearch'])->name('foodSearchProducts');
 
+//supplement画面の検索
 Route::get('products/supplementSearch', [ProductsController::class, 'supplementSearch'])->name('supplementSearchProducts');
 
 //ほしい物リストに追加
