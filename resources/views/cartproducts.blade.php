@@ -19,7 +19,7 @@
                 @foreach($cartItems->items as $item)
                 <tr>
                     <td class="cart-image">
-                        <a href=""><img src="" class="cart-product-image"></a>
+                        <img src="{{ Storage::disk('local')->url('product_images/'.$item['data']['image']) }}" class="cart-product-image">
                     </td>
                     <td class="cart_description">
                         <h4><a href="">{{ $item['data']['name'] }}</a></h4>
