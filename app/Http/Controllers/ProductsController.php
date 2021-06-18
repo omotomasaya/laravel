@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductsController extends Controller
 {
 
-    //
+    //products画面
     public function index(){
 
         $products = Product::all();
@@ -21,6 +21,7 @@ class ProductsController extends Controller
 
     }
 
+    //equipment画面
     public function equipmentProducts(){
 
         $products = DB::table('products')->where('type','Equipment')->get();
@@ -28,6 +29,7 @@ class ProductsController extends Controller
 
     }
 
+    //food画面
     public function foodProducts(){
 
         $products = DB::table('products')->where('type','Food')->get();
@@ -35,6 +37,7 @@ class ProductsController extends Controller
         
     }
 
+    //supplement画面
     public function supplementProducts(){
 
         $products = DB::table('products')->where('type','Supplement')->get();
@@ -42,6 +45,7 @@ class ProductsController extends Controller
         
     }
 
+    //products画面の検索
     public function search(Request $request){
 
         $searchText = $request->get('searchText');
@@ -50,6 +54,7 @@ class ProductsController extends Controller
 
     }
 
+    //equipment画面の検索
     public function equipmentSearch(Request $request){
 
         $searchText = $request->get('searchText');
@@ -59,6 +64,7 @@ class ProductsController extends Controller
 
     }
 
+    //food画面の検索
     public function foodSearch(Request $request){
 
         $searchText = $request->get('searchText');
@@ -68,6 +74,7 @@ class ProductsController extends Controller
 
     }
 
+    //supplement画面の検索
     public function supplementSearch(Request $request){
 
         $searchText = $request->get('searchText');
@@ -77,6 +84,7 @@ class ProductsController extends Controller
 
     }
 
+    //ほしい物リストの画面
     public function wishlist(){
 
         if(Auth::id()){
@@ -95,6 +103,7 @@ class ProductsController extends Controller
 
     }
 
+    //ほしい物リストに商品を追加
     public function addToWishlist($id){
 
         $product = Product::find($id);
@@ -124,6 +133,7 @@ class ProductsController extends Controller
 
     }
 
+    //ほしい物リストから商品を削除
     public function deleteWishlist($id){
 
         $isUserLoggedIn = Auth::user();
@@ -138,6 +148,7 @@ class ProductsController extends Controller
 
     }
 
+    //カートに商品を追加
     public function addProductToCart(Request $request, $id){
 
         $productCart = $request->session()->get('cart');
@@ -151,6 +162,7 @@ class ProductsController extends Controller
 
     }
 
+    //カート画面
     public function showCart(){
 
         $cart = Session::get('cart');
@@ -166,6 +178,7 @@ class ProductsController extends Controller
         }
     }
 
+    //カートから商品を削除
     public function deleteItemFromCart(Request $request, $id){
 
         $cart = $request->session()->get('cart');
@@ -186,6 +199,7 @@ class ProductsController extends Controller
 
     }
 
+    //商品の個数を増やす
     public function increaseSingleProduct(Request $request,$id){
 
 
@@ -200,6 +214,7 @@ class ProductsController extends Controller
 
     }
     
+    //商品を個数を減らす
     public function decreaseSingleProduct(Request $request,$id){
       
         $productCart = $request->session()->get('cart');
@@ -220,12 +235,14 @@ class ProductsController extends Controller
 
     }
 
+    //チェック画面
     public function checkoutProducts(){
 
         return view('checkoutproducts');
 
     }
 
+    //注文を作成
     public function createNewOrder(Request $request){
 
         $cart = Session::get('cart');
@@ -247,7 +264,7 @@ class ProductsController extends Controller
 
         }
 
-        if($first_name && $last_name&& $zip&& $prefectures&& $address&& $phone&& $email&& $delivery_date){
+        if($first_name && $last_name && $zip && $prefectures && $address && $phone && $email && $delivery_date){
 
             if(preg_match('/^[0-9]+$/', $zip) && preg_match('/^[0-9]+$/', $phone)){
 

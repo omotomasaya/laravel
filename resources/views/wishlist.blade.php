@@ -9,10 +9,10 @@
                 <div class="wishlist-wrapper">
                     @foreach($products as $product)
                     <div class="wishlist-box">
-                        <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" class="product-wishlist-image" alt="" />
+                        <img class="product-wishlist-image">
                         <div class="wishlist-product-information">
                             <h2>{{ $product->name }}</h2>
-                            <p>Web ID: {{ $product->id }}</p>
+                            <p>商品ID: {{ $product->id }}</p>
                             <span>¥{{ $product->price }}</span>
                             <div class="wishlist-product-description">
                                 <span>説明</span>
