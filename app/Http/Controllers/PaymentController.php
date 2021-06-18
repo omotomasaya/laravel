@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
-    //
+    //購入画面
     public function showPayment(){
 
      $payment_info = Session::get('payment_info');
@@ -32,6 +32,7 @@ class PaymentController extends Controller
 
     }
 
+    //支払い
     public function payment(Request $request){
 
         $payment_info = Session::get('payment_info');
