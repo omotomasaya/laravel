@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //管理者データ
         DB::table('users')->insert([
             'name' => 'test',
             'email' => 'test@test.com',

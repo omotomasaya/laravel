@@ -7,7 +7,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>#id</th>
+            <th>id</th>
             <th>Image</th>
             <th>Name</th>
             <th>Description</th>

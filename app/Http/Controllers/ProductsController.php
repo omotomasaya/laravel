@@ -108,6 +108,7 @@ class ProductsController extends Controller
 
         $product = Product::find($id);
         $isUserLoggedIn = Auth::user();
+
         if($isUserLoggedIn){
 
             $user_id = Auth::id();
@@ -127,7 +128,7 @@ class ProductsController extends Controller
 
         }else{
 
-            return redirect()->route('allProducts');
+            return redirect()->route('login');
 
         }
 
