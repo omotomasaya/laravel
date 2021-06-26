@@ -287,9 +287,7 @@ class ProductsController extends Controller
 
                     }
 
-                    $payment_info = $newOrderArray;
-                    $payment_info['order_id'] = $order_id;
-                    $request->session()->put('payment_info',$payment_info);
+                    Session::forget("cart");
                     return redirect()->route('ShowPayment');
 
                 }else{

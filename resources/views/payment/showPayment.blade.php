@@ -3,6 +3,10 @@
 
 @section('center')
 
+@if(Auth::user())
+
+@if( DB::table('orders')->where('status', 'on_hold')->where('user_id', Auth::id())->get() )
+
 <section class="checkout-wrapper">
     <div class="checkout-box">
         <div class="step-one">
@@ -33,5 +37,15 @@
         </div>
     </div>
 </section>
+
+@else
+
+<div>
+<a href="{{ route('allProducts') }}" class="btn-check-out">商品一覧へ</a>
+</div>
+
+@endif
+
+@endif
 
 @endsection

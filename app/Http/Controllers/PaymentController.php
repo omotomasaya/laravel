@@ -17,15 +17,25 @@ class PaymentController extends Controller
     //購入画面
     public function showPayment(){
 
-     $payment_info = Session::get('payment_info');
+        $payment_info[] = array();
+        $payment_info = DB::table('orders')->where('user_id', Auth::id())->where('status', 'on_hold')->get()->toArray();
+        if(empty($payment_info)){
 
-        //
+                return redirect()->route('allProducts');
+
+        }
+        $payment_info = json_decode(json_encode($payment_info[0]), true);
+
         if($payment_info['status'] == 'on_hold'){
+
             return view('payment.showPayment',['payment_info'=> $payment_info]);
+
          
         }else{
+
              return redirect()->route("allProducts");
-           }
+
+        }
 
         
 
@@ -35,7 +45,9 @@ class PaymentController extends Controller
     //支払い
     public function payment(Request $request){
 
-        $payment_info = Session::get('payment_info');
+        $payment_info[] = array();
+        $payment_info = DB::table('orders')->where('user_id', Auth::id())->where('status', 'on_hold')->get()->toArray();
+        $payment_info = json_decode(json_encode($payment_info[0]), true);
         $order_id = $payment_info['order_id'];
         $status = $payment_info['status'];
         $amount = $payment_info['price'];
@@ -52,8 +64,6 @@ class PaymentController extends Controller
             $created_order = DB::table("subscriptions")->insert($newPaymentArray);
        
             DB::table('orders')->where('order_id', $order_id)->update(['status' => 'paid']);
-
-            Session::forget("cart");
        
           }
 
@@ -64,11 +74,15 @@ class PaymentController extends Controller
                 'currency' => 'jpy',
                 'source'=> request()->stripeToken,
             ));
-          return redirect()->route('allProducts')->with('message', 'ご購入ありがとうございました');
+
           \DB::commit();
+
         }catch(\Throwable $e){
           \DB::rollback();
           echo 'エラー：'.$e->getMessage();
         }
+
+        return redirect()->route('allProducts')->with('message', 'ご購入ありがとうございました');
+
      }
 }
