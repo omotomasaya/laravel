@@ -23,7 +23,7 @@
 
                 <li class="nav-item"><a href="{{ route('wishlist') }}">
 
-                @if(DB::table('wishlist')->where('user_id', Auth::id())->count() > 0)
+                @if( DB::table('wishlist')->where('user_id', Auth::id())->count() > 0 )
                 <span class="cart-with-numbers">
                 {{ DB::table('wishlist')->where('user_id', Auth::id())->count() }}</span>
 
@@ -41,15 +41,21 @@
 
                 <li class="nav-item"><a href="{{ route('ShowPayment') }}">
 
+                @if( DB::table('orders')->where('status', 'on_hold')->where('user_id', Auth::id())->count() > 0 )
+
                 <span class="cart-with-numbers">
                 {{ DB::table('orders')->where('status', 'on_hold')->where('user_id', Auth::id())->count() }}</span>
+
+                @endif
 
                 Payment</a></li>
 
                 <li class="nav-item"><a href="{{ route('cartproducts') }}">
                 @if(Session::has('cart'))
-                
+
+                @if(Session::get('cart')->totalQuantity != 0)
                 <span class="cart-with-numbers">{{Session::get('cart')->totalQuantity}}</span> 
+                @endif
 
                 @endif
 

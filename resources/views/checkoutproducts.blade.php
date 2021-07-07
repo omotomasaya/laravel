@@ -11,7 +11,15 @@
 
         @if(Auth::user())
 
-        @if(session('cart'))
+        @if( DB::table('orders')->where('status', 'on_hold')->where('user_id', Auth::id())->count() > 0)
+
+        <div>
+        <a href="{{ route('ShowPayment') }}" class="">前回のお会計が済んでいません。</a>
+        </div>
+
+        @elseif(Session::has('cart'))
+
+        @if(Session::get('cart')->totalQuantity > 0)
 
         <div class="register">
             <p>以下の情報に全て記入をお願いいたします</p>
@@ -102,8 +110,16 @@
         <div>
         <a href="{{ route('allProducts') }}" class="btn-check-out">商品一覧へ</a>カートに何も入っていません
         </div>
+        
+        @endif
 
-        @endif        
+        @else
+
+        <div>
+        <a href="{{ route('allProducts') }}" class="btn-check-out">商品一覧へ</a>カートに何も入っていません
+        </div>
+
+        @endif
 
         @else
 
