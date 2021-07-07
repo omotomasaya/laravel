@@ -143,6 +143,7 @@ class AdminProductsController extends Controller
         }
 
         Product::destroy($id);
+        DB::table('wishlist')->where('wishlist_id',$product['id'])->delete();
 
         return redirect()->route('adminDisplayProducts');
 
