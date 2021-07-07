@@ -193,4 +193,5 @@ class AdminProductsController extends Controller
         return redirect()->route('adminOrdersPanel');
         
     }
+    
 }
