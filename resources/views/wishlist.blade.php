@@ -8,6 +8,7 @@
                 <h2 class="wishlist-heading">Wishlist</h2>
                 <div class="wishlist-wrapper">
                     @foreach($products as $product)
+
                     <div class="wishlist-box">
                         <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" class="product-wishlist-image">
                         <div class="wishlist-product-information">
