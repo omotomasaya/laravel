@@ -39,6 +39,10 @@
 # 外部リンク
 http://aws-infra-123.work
 
+下記の情報でログインできます。<br>
+メール　　：test@test.com
+パスワード：testtest
+
  
 # 追加したい機能
 
