@@ -24,6 +24,13 @@
                     <a href="{{ route('adminDisplayProducts')}}" class="btn btn-primary">管理画面</a>
                     
                     @endif
+
+                    @if(Auth::user()->admin == 0)
+
+                    <a href="{{ route('accountDelete')}}"  class="btn btn-danger">アカウント削除</a>
+                    
+                    @endif
+
                 </div>
             </div>
         </div>

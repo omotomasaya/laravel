@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminProductsController;
 
 /*
@@ -85,6 +86,11 @@ Route::get('showPayment', [PaymentController::class, 'showPayment'])->name('Show
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//アカウント削除
+Route::get('accountDelete', [HomeController::class, 'accountDelete'])->name('accountDelete');
+
+Route::get('delete', [HomeController::class, 'delete'])->name('delete');
 
 //管理画面
 Route::get('admin/products', [AdminProductsController::class, 'index'])->name('adminDisplayProducts')->middleware('restrictAccess');
