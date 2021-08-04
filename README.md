@@ -36,9 +36,6 @@
 <p>商品の作成、削除、編集</p>
 <img src="https://user-images.githubusercontent.com/78944548/125425647-551bd80a-4642-461b-9f3c-58b139c8d6e8.gif">
 
-# 外部リンク
-http://aws-infra-123.work
-
 下記の情報でログインできます。<br>
 メール　　：test@test.com
 パスワード：testtest
